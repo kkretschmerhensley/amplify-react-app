@@ -30,6 +30,21 @@ app.use(function(req, res, next) {
  * Example get method *
  **********************/
 
+// amplify/backend/function/cryptofunction/src/app.js
+ app.get('/coins', (req, res) => {
+
+   const coins = [
+     { name: 'Bitcoin', symbol: 'BTC', price_usd: "10000" },
+     { name: 'Ethereum', symbol: 'ETH', price_usd: "400" },
+     { name: 'Litecoin', symbol: 'LTC', price_usd: "150" }
+   ];
+
+   res.json({
+     // shorthand for coins: coins, makes the property name the same as the object name
+     coins
+   });
+ });
+
 app.get('/item', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
