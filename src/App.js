@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import {API} from 'aws-amplify';
+import React, { useState, useEffect } from 'react';
+import { API } from 'aws-amplify';
 import logo from './logo.svg';
 import './App.css';
+import { GitHubBornOn } from './GitHubBornOn';
 
 const App = () => {
   // Create coins variable and set to empty array
@@ -45,6 +46,8 @@ const updateInputValues = (type, value) => {
 const [loading, updateLoading] = useState(true);
 
   return (
+    <>
+
     <div className="App">
 
       <input
@@ -71,6 +74,9 @@ const [loading, updateLoading] = useState(true);
         ))
       }
     </div>
+
+    <GitHubBornOn/>
+    </>
   );
 }
 

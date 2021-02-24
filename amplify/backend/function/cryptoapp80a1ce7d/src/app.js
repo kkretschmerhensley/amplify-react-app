@@ -50,7 +50,16 @@ app.use(function(req, res, next) {
        res.json({ coins: response.data.data });
      })
      .catch(err => res.json({ error: err }));
- });
+   });
+
+ app.get(
+   '/born', (req, res) => {
+     axios.get("https://api.github.com/users/kkretschmerhensley")
+       .then(response => {
+         res.json({ borninfo: response.data });
+       })
+       .catch(err => res.json({ error: err }));
+   });
 
 /****************************
 * Example post method *
