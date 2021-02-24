@@ -11,16 +11,21 @@ const App = () => {
   // Define function to all API
   // async function fetchCoins()
   const fetchCoins = async () => {
-    updateLoading(true);
+    try {
+      updateLoading(true);
 
-    const { limit, start } = input;
-    const data = await API.get('cryptoapi', `/coins?limit=${limit}&start=${start}`);
+      const { limit, start } = input;
+      const data = await API.get('cryptoapi', `/coins?limit=${limit}&start=${start}`);
 
-    updateCoins(data.coins);
-    // coins = data.coins;
-    console.log(coins);
+      updateCoins(data.coins);
+      // coins = data.coins;
+      console.log(coins);
 
-    updateLoading(false);
+      updateLoading(false);
+    }
+    catch (err) {
+      console.error(err);
+    }
   };
 
   // Call fetchCoins function when component loads
