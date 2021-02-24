@@ -11,12 +11,16 @@ const App = () => {
   // Define function to all API
   // async function fetchCoins()
   const fetchCoins = async () => {
+    updateLoading(true);
+
     const { limit, start } = input;
     const data = await API.get('cryptoapi', `/coins?limit=${limit}&start=${start}`);
 
     updateCoins(data.coins);
     // coins = data.coins;
     console.log(coins);
+
+    updateLoading(false);
   };
 
   // Call fetchCoins function when component loads
@@ -31,6 +35,9 @@ const [input, updateInput] = useState({ limit: 5, start: 0 });
 const updateInputValues = (type, value) => {
   updateInput({ ...input, [type]: value });
 };
+
+// makes React aware of the loading variable
+const [loading, updateLoading] = useState(true);
 
   return (
     <div className="App">
@@ -47,7 +54,10 @@ const updateInputValues = (type, value) => {
 
       <button onClick={fetchCoins}>Fetch Coins</button>
 
+      {loading && <h2>Loading...</h2>}
+
       {
+        !loading &&
         coins.map((coin, index) => (
           <div key={index}>
             <h2>{coin.name} - {coin.symbol}</h2>
