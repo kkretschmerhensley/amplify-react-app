@@ -6,6 +6,7 @@ import './App.css';
 const App = () => {
   // Create coins variable and set to empty array
   const [coins, updateCoins] = useState([]);
+  // let coins = [];
 
   // Define function to all API
   // async function fetchCoins()
@@ -14,6 +15,8 @@ const App = () => {
     const data = await API.get('cryptoapi', `/coins?limit=${limit}&start=${start}`);
 
     updateCoins(data.coins);
+    // coins = data.coins;
+    console.log(coins);
   };
 
   // Call fetchCoins function when component loads
@@ -36,7 +39,7 @@ const updateInputValues = (type, value) => {
         placeholder="Enter a starting index"
         onChange={e => updateInputValues('start', e.target.value)}
       />
-      
+
       <input
         onChange={e => updateInputValues('limit', e.target.value)}
         placeholder="Enter a limit"
