@@ -32,7 +32,8 @@ const App = () => {
   // Call fetchCoins function when component loads
   useEffect(() => {
     fetchCoins();
-  }, []);
+  }, []
+);
 
   // Create additional state to hold user input for limit and start properties
 const [input, updateInput] = useState({ limit: 5, start: 0 });
